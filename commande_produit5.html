@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            margin: 0 auto;
+            background-color: #ADD8E6;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        body {
+            background-image: url('../images/background.jpg');
+            background-size: cover;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Order Product</h1>
+    <table border="1" width="100%">
+        <tr>
+            <td rowspan="6"><img src="../images/chaussure1.jpg" alt="Product"></td>
+            <td>Seller:</td>
+            <td><input type="text" value="E-shopping Store" disabled></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" value="3999 DA" disabled></td>
+        </tr>
+        <tr>
+            <td>Reference:</td>
+            <td><input type="text" value="S001" disabled></td>
+        </tr>
+        <tr>
+            <td>Size:</td>
+            <td>
+                <select required>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td>
+                <select required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Order</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

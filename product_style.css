@@ -1,0 +1,59 @@
+/* Dark mode styles */
+body {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Product page styles */
+img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff; /* Table text color */
+}
+
+td {
+    padding: 10px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 5px;
+    background-color: #555; /* Input and select background color */
+    color: #fff; /* Input and select text color */
+    border: 1px solid #888; /* Input and select border color */
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h1 {
+    text-align: center;
+    color: #fff; /* Heading text color */
+    margin: 20px 0;
+}
+
+/* Color options styling */
+.color-options {
+    display: flex;
+    gap: 15px;
+}
+
+.color-options input[type="checkbox"] {
+    margin-right: 5px;
+}

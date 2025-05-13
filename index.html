@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            /* Light Mode Colors - True Minimalist Palette */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f8f8;
+            --header-bg: #2c2c2c;  /* Sophisticated dark gray */
+            --category-bg: #f0f0f0;  /* Slightly darker for contrast */
+            --category-border: #e0e0e0;
+            --text-primary: #2c2c2c;
+            --text-secondary: #ffffff;  /* White text for dark backgrounds */
+            --price-bg: #f8f8f8;
+            --hover-bg: #f0f0f0;
+            --shadow: rgba(0,0,0,0.03);
+            --accent: #4a4a4a;  /* Neutral accent color */
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Colors - True Minimalist Palette */
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #242424;
+            --header-bg: #333333;  /* Slightly lighter than background */
+            --category-bg: #2d2d2d;  /* Slightly lighter for contrast */
+            --category-border: #3d3d3d;
+            --text-primary: #ffffff;
+            --text-secondary: #ffffff;
+            --price-bg: #2d2d2d;
+            --hover-bg: #2d2d2d;
+            --shadow: rgba(0,0,0,0.2);
+            --accent: #e0e0e0;  /* Light accent for dark mode */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        table { 
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px var(--shadow);
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        tr.header { 
+            background-color: var(--header-bg);
+            color: var(--text-secondary);  /* This ensures white text on dark header */
+        }
+
+        tr.header h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            width: 100%;
+            color: var(--text-secondary);  /* Explicitly set text color to white */
+        }
+
+        h2 { 
+            color: var(--text-primary);
+            font-style: italic;
+            margin: 0;
+        }
+
+        img { 
+            width: 200px; 
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 10px auto;
+        }
+
+        img:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .category { 
+            background-color: var(--category-bg);
+            padding: 20px;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--category-border);
+            position: relative;
+        }
+
+        .category h3 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .category h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .price { 
+            background-color: var(--price-bg);
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--hover-bg);
+        }
+
+        a { 
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .login-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .login-link:hover {
+            background-color: var(--header-bg);
+            transform: translateY(-2px);
+        }
+
+        td {
+            padding: 10px;
+            border: none;
+        }
+
+        tr:not(.header):not(.category) {
+            transition: background-color 0.3s ease;
+        }
+
+        tr:not(.header):not(.category):hover {
+            background-color: var(--hover-bg);
+        }
+
+        .theme-switch {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 9999;
+            box-shadow: 0 2px 8px var(--shadow);
+            font-size: 14px;
+        }
+
+        .theme-switch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+            opacity: 0.9;
+        }
+
+        .welcome-message {
+            display: none; /* Hide the old welcome message */
+        }
+
+        .header-container {
+            position: relative;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-switch" onclick="toggleTheme()">Toggle Dark Mode</button>
+    <div class="header-container">
+        <table>
+            <tr class="header">
+                <td colspan="4"><h2>Welcome to our store</h2></td>
+            </tr>
+            <tr class="header">
+                <td colspan="4" align="right"><a href="login.html" class="login-link">Login</a></td>
+            </tr>
+            <tr>
+                <td colspan="4" class="welcome-message">Welcome to our store</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="category"><h3>Watches for women</h3></td>
+            </tr>
+            <tr>
+                <td><a href="commande_produit1.html"><img src="images/montref1.jpg" alt="Watch 1"></a></td>
+                <td><a href="commande_produit2.html"><img src="images/montref2.jpg" alt="Watch 2"></a></td>
+                <td><a href="commande_produit3.html"><img src="images/montref3.jpg" alt="Watch 3"></a></td>
+                <td><a href="commande_produit4.html"><img src="images/montref4.jpg" alt="Watch 4"></a></td>
+            </tr>
+            <tr>
+                <td class="price">Prix: 4999 DA</td>
+                <td class="price">Prix: 5999 DA</td>
+                <td class="price">Prix: 6999 DA</td>
+                <td class="price">Prix: 7999 DA</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="category"><h3>Shoes for women</h3></td>
+            </tr>
+            <tr>
+                <td><a href="commande_produitf1.html"><img src="images/chaussuref1.jpg" alt="Shoe 1"></a></td>
+                <td><a href="commande_produitf2.html"><img src="images/chaussuref2.jpg" alt="Shoe 2"></a></td>
+                <td><a href="commande_produitf3.html"><img src="images/chaussuref3.jpg" alt="Shoe 3"></a></td>
+                <td><a href="commande_produitf4.html"><img src="images/chaussuref4.jpg" alt="Shoe 4"></a></td>
+            </tr>
+            <tr>
+                <td class="price">Prix: 3999 DA</td>
+                <td class="price">Prix: 4599 DA</td>
+                <td class="price">Prix: 5599 DA</td>
+                <td class="price">Prix: 6599 DA</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="category"><h3>Watches for men</h3></td>
+            </tr>
+            <tr>
+                <td><a href="commande_produitff1.html"><img src="images/montre21.jpg" alt="Watch 1"></a></td>
+                <td><a href="commande_produitff2.html"><img src="images/montre22.jpg" alt="Watch 2"></a></td>
+                <td><a href="commande_produitff3.html"><img src="images/montre23.jpg" alt="Watch 3"></a></td>
+                <td><a href="commande_produitff4.html"><img src="images/montre24.jpg" alt="Watch 4"></a></td>
+            </tr>
+            <tr>
+                <td class="price">Prix: 2999 DA</td>
+                <td class="price">Prix: 3599 DA</td>
+                <td class="price">Prix: 4599 DA</td>
+                <td class="price">Prix: 5599 DA</td>
+            </tr>
+            <tr>
+                <td><a href="commande_produitff5.html"><img src="images/montre5.jpg" alt="Watch 5"></a></td>
+                <td><a href="commande_produitff6.html"><img src="images/montre3.jpg" alt="Watch 6"></a></td>
+                <td><a href="commande_produitff7.html"><img src="images/montre4.jpg" alt="Watch 7"></a></td>
+                <td><a href="commande_produitff8.html"><img src="images/montre1.jpg" alt="Watch 8"></a></td>
+            </tr>
+            <tr>
+                <td class="price">Prix: 6599 DA</td>
+                <td class="price">Prix: 7599 DA</td>
+                <td class="price">Prix: 8599 DA</td>
+                <td class="price">Prix: 9599 DA</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="category"><h3>Shoes for men</h3></td>
+            </tr>
+            <tr>
+                <td><a href="commande_produith1.html"><img src="images/chaussureh1.jpg" alt="Shoe 1"></a></td>
+                <td><a href="commande_produith2.html"><img src="images/chaussureh2.jpg" alt="Shoe 2"></a></td>
+                <td><a href="commande_produith3.html"><img src="images/chaussureh3.jpg" alt="Shoe 3"></a></td>
+                <td><a href="commande_produith4.html"><img src="images/chaussureh4.jpg" alt="Shoe 4"></a></td>
+            </tr>
+            <tr>
+                <td class="price">Prix: 29999 DA</td>
+                <td class="price">Prix: 35999 DA</td>
+                <td class="price">Prix: 45999 DA</td>
+                <td class="price">Prix: 55999 DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</body>
+</html>

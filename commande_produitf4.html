@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Shoes - E-shopping</title>
+    <link rel="stylesheet" href="product_style.css">
+</head>
+<body>
+    <h1>Order Product</h1>
+    <table border="1" width="100%">
+        <tr>
+            <td rowspan="6"><img src="images/chaussuref4.jpg" alt="Shoe 4"></td>
+            <td>Seller:</td>
+            <td><input type="text" value="E-shopping Store" disabled></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" value="5999 DA" disabled></td>
+        </tr>
+        <tr>
+            <td>Reference:</td>
+            <td><input type="text" value="S004" disabled></td>
+        </tr>
+        <tr>
+            <td>Color:</td>
+            <td class="color-options">
+                <label><input type="checkbox"> Black</label>
+                <label><input type="checkbox"> White</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td>
+                <select required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Order</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
